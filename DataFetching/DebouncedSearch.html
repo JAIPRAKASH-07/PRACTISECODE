@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debounced Search Bar</title>
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search..." />
+  <div id="results"></div>
+
+  <script>
+    // Debounce function to delay execution
+    function debounce(func, delay) {
+      let timeout;
+      return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+      };
+    }
+
+    // Function to simulate search operation
+    async function performSearch(query) {
+      try {
+        console.log('Searching for:', query);
+        // Simulate fetching search results (replace this with actual fetch logic)
+        const results = [`Result for "${query}"`]; 
+        document.getElementById('results').innerHTML = results.map(result => `<p>${result}</p>`).join('');
+      } catch (error) {
+        console.error('Error during search:', error.message);
+      }
+    }
+
+    // Add debounce to the search input
+    const searchInput = document.getElementById('searchInput');
+    const debouncedSearch = debounce((e) => performSearch(e.target.value), 500);
+
+    // Attach event listener to input field
+    searchInput.addEventListener('input', debouncedSearch);
+  </script>
+</body>
+</html>

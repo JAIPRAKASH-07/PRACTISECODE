@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Calculator</title>
+
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" class="display" id="display" disabled />
+    <div class="buttons">
+      <button class="button clear" onclick="clearDisplay()">C</button>
+      <button class="button backspace" onclick="backspace()">←</button>
+      <button class="button operator" onclick="appendOperator('%')">%</button>
+      <button class="button operator" onclick="appendOperator('/')">/</button>
+      
+      <button class="button" onclick="appendNumber('7')">7</button>
+      <button class="button" onclick="appendNumber('8')">8</button>
+      <button class="button" onclick="appendNumber('9')">9</button>
+      <button class="button operator" onclick="appendOperator('*')">×</button>
+      
+      <button class="button" onclick="appendNumber('4')">4</button>
+      <button class="button" onclick="appendNumber('5')">5</button>
+      <button class="button" onclick="appendNumber('6')">6</button>
+      <button class="button operator" onclick="appendOperator('-')">−</button>
+      
+      <button class="button" onclick="appendNumber('1')">1</button>
+      <button class="button" onclick="appendNumber('2')">2</button>
+      <button class="button" onclick="appendNumber('3')">3</button>
+      <button class="button operator" onclick="appendOperator('+')">+</button>
+      
+      <button class="button" onclick="appendNumber('0')">0</button>
+      <button class="button" onclick="appendNumber('.')">.</button>
+      <button class="button equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+  <script>
+    let currentInput = ""; // Store the current input string
+
+    // Append numbers or operators to the input
+    function appendNumber(num) {
+      currentInput += num;
+      updateDisplay();
+    }
+
+    function appendOperator(operator) {
+      // Prevent multiple operators in a row
+      if (currentInput !== "" && !isNaN(currentInput.slice(-1))) {
+        currentInput += operator;
+        updateDisplay();
+      }
+    }
+
+    // Clear the display
+    function clearDisplay() {
+      currentInput = "";
+      updateDisplay();
+    }
+
+    // Backspace function
+    function backspace() {
+      currentInput = currentInput.slice(0, -1);
+      updateDisplay();
+    }
+
+    // Calculate the result
+    function calculate() {
+      try {
+        if (currentInput) {
+          currentInput = eval(currentInput.replace("×", "*").replace("−", "-")).toString(); // Evaluate the expression
+        }
+        updateDisplay();
+      } catch (error) {
+        currentInput = "Error";
+        updateDisplay();
+      }
+    }
+
+    // Update the display
+    function updateDisplay() {
+      document.getElementById("display").value = currentInput || "0";
+    }
+
+    // Add keyboard support
+    document.addEventListener("keydown", (event) => {
+      const validKeys = "0123456789+-*/.%";
+      if (validKeys.includes(event.key)) {
+        appendNumber(event.key);
+      } else if (event.key === "Enter") {
+        calculate();
+      } else if (event.key === "Backspace") {
+        backspace();
+      } else if (event.key === "Escape") {
+        clearDisplay();
+      }
+    });
+  </script>
+</body>
+</html>

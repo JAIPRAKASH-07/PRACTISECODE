@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+  <!-- <link rel="stylesheet" href="Style.css"> -->
+</head>
+
+<body>
+  <main>
+    <h1>Registration Form</h1>
+    <form id="formid">
+      <div id="name" class="com">
+        <label><b>Name:</b></label>
+        <input type="text" id="nameid" name="name" placeholder="name" />
+      </div>
+      <div id="email" class="com">
+        <label><b>Email:</b></label>
+        <input type="email" id="emailid" name="email" placeholder="email@gmail.com" />
+      </div>
+      <div id="pass" class="com">
+        <label><b>Password:</b></label>
+        <input type="password" id="passid" name="pass" placeholder="Enter password" />
+      </div>
+      <div id="Gender" class="com">
+        <label><b>Gender:</b></label>
+        Male <input type="radio" id="maleid" name="gender" value="Male" />
+        Female <input type="radio" id="femaleid" name="gender" value="Female" />
+      </div>
+      <div id="city" class="com">
+        <label><b>City:</b></label>
+        <select id="citySelect" name="city">
+          <option value="">Select</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Delhi">Delhi</option>
+        </select>
+      </div>
+      <div id="Qualifications" class="com">
+        <label><b>Educational Qualifications:</b></label>
+        School-Level <input type="checkbox" id="Qualificationsid1" name="Qualifications" value="School-Level" />
+        Undergraduate-Level <input type="checkbox" id="Qualificationsid2" name="Qualifications" value="Undergraduate-Level" />
+        Postgraduate-Level <input type="checkbox" id="Qualificationsid3" name="Qualifications" value="Postgraduate-Level" />
+      </div>
+      <div id="fatherName" class="com">
+        <label><b>Father's Name:</b></label>
+        <input type="text" id="fNameid" name="fatherName" placeholder="Mr. name" />
+      </div>
+      <div id="Phone" class="com">
+        <label><b>Phone:</b></label>
+        <input type="number" id="Phoneid" name="phone" placeholder="1234567890" />
+      </div>
+      <div id="date" class="com">
+        <label><b>Date:</b></label>
+        <input type="date" id="Dateid" name="Date" />
+      </div>
+      <div id="time" class="com">
+        <label><b>Time:</b></label>
+        <input type="time" id="Timeid" name="Time" />
+      </div>
+      <div id="subtn" class="com">
+        <button type="button" id="submitid" onclick="handleSubmit()">Submit</button>
+        <button type="reset" id="cancelid" >Cancel</button>
+      </div>
+    </form>
+  </main>
+<script src="Script.js"> </script>
+ 
+</body>
+</html>
+<!-- onclick="reset()" -->
